@@ -2198,7 +2198,7 @@ Osoite: %4</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="106"/>
-        <source>Imports blocks from external blk000?.dat file</source>
+        <source>Imports blocks from external swz000?.dat file</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2285,8 +2285,8 @@ TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="132"/>
-        <source>Error loading blkindex.dat</source>
-        <translation>Virhe ladattaessa blkindex.dat-tiedostoa</translation>
+        <source>Error loading swzindex.dat</source>
+        <translation>Virhe ladattaessa swzindex.dat-tiedostoa</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="134"/>

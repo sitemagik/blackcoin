@@ -1,4 +1,4 @@
-Blackcoin 0.6 BETA
+sweet 0.6 BETA
 
 Copyright (c) 2009-2012 Bitcoin Developers
 Copyright (c) 2011-2012 Litecoin Developers
@@ -11,7 +11,7 @@ cryptographic software written by Eric Young (eay@cryptsoft.com).
 
 Intro
 -----
-Blackcoin is a free open source peer-to-peer electronic cash system that is
+sweet is a free open source peer-to-peer electronic cash system that is
 completely decentralized, without the need for a central server or trusted
 parties.  Users hold the crypto keys to their own money and transact directly
 with each other, with the help of a P2P network to check for double-spending.
@@ -19,14 +19,14 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 -----
-You need the Qt4 run-time libraries to run Blackcoin-Qt. On Debian or Ubuntu:
+You need the Qt4 run-time libraries to run sweet-Qt. On Debian or Ubuntu:
   sudo apt-get install libqtgui4
 
 Unpack the files into a directory and run:
- bin/32/blackcoin-qt (GUI, 32-bit)
- bin/32/blackcoind (headless, 32-bit)
- bin/64/blackcoin-qt (GUI, 64-bit)
- bin/64/blackcoind (headless, 64-bit)
+ bin/32/sweet-qt (GUI, 32-bit)
+ bin/32/sweetd (headless, 32-bit)
+ bin/64/sweet-qt (GUI, 64-bit)
+ bin/64/sweetd (headless, 64-bit)
 
 
 See the documentation at the bitcoin wiki:

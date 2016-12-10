@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2012 Litecoin Developers
-// Copyright (c) 2013 Blackcoin Developers
+// Copyright (c) 2013 sweet Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -31,7 +31,7 @@ unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
 uint256 hashGenesisBlock("0x3b0c199134644e6e00c15ab088bc1e4fc58f74204f5e6a93671bb3bc13a1c999");
-static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Blackcoin: starting difficulty is 1 / 2^12
+static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // sweet: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 CBigNum bnBestChainWork = 0;
@@ -51,7 +51,7 @@ map<uint256, map<uint256, CDataStream*> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "Blackcoin Signed Message:\n";
+const string strMessageMagic = "sweet Signed Message:\n";
 
 double dHashesPerSec;
 int64 nHPSTimerStart;
@@ -832,13 +832,13 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     int64 nSubsidy = 64 * COIN;
 
     // Subsidy is cut in half every 840000 blocks, which will occur approximately every 3 years
-    nSubsidy >>= (nHeight / 105190); // Blackcoin: 105k blocks in ~3 years
+    nSubsidy >>= (nHeight / 105190); // sweet: 105k blocks in ~3 years
 
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 7 * 24 * 60 * 60; // Blackcoin: 3.5 days
-static const int64 nTargetSpacing = 15 * 60; // Blackcoin: 2.5 minutes
+static const int64 nTargetTimespan = 7 * 24 * 60 * 60; // sweet: 3.5 days
+static const int64 nTargetSpacing = 15 * 60; // sweet: 2.5 minutes
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 //
@@ -897,7 +897,7 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
         return pindexLast->nBits;
     }
 
-    // Blackcoin: This fixes an issue where a 51% attack can change difficulty at will.
+    // sweet: This fixes an issue where a 51% attack can change difficulty at will.
     // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
     int blockstogoback = nInterval-1;
     if ((pindexLast->nHeight+1) != nInterval)
@@ -1169,7 +1169,7 @@ bool CTransaction::ConnectInputs(MapPrevTx inputs,
 {
     // Take over previous transactions' spent pointers
     // fBlock is true when this is called from AcceptBlock when a new best-block is added to the blockchain
-    // fMiner is true when called from the internal blackcoin miner
+    // fMiner is true when called from the internal sweet miner
     // ... both are false when called from CTransaction::AcceptToMemoryPool
     if (!IsCoinBase())
     {
@@ -1916,7 +1916,7 @@ bool CheckDiskSpace(uint64 nAdditionalBytes)
         string strMessage = _("Warning: Disk space is low");
         strMiscWarning = strMessage;
         printf("*** %s\n", strMessage.c_str());
-        uiInterface.ThreadSafeMessageBox(strMessage, "Blackcoin", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
+        uiInterface.ThreadSafeMessageBox(strMessage, "sweet", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
         StartShutdown();
         return false;
     }
@@ -1927,7 +1927,7 @@ FILE* OpenBlockFile(unsigned int nFile, unsigned int nBlockPos, const char* pszM
 {
     if ((nFile < 1) || (nFile == (unsigned int) -1))
         return NULL;
-    FILE* file = fopen((GetDataDir() / strprintf("blk%04d.dat", nFile)).string().c_str(), pszMode);
+    FILE* file = fopen((GetDataDir() / strprintf("swz%04d.dat", nFile)).string().c_str(), pszMode);
     if (!file)
         return NULL;
     if (nBlockPos != 0 && !strchr(pszMode, 'a') && !strchr(pszMode, 'w'))
@@ -2153,14 +2153,14 @@ bool LoadExternalBlockFile(FILE* fileIn)
     {
         LOCK(cs_main);
         try {
-            CAutoFile blkdat(fileIn, SER_DISK, CLIENT_VERSION);
+            CAutoFile swzdat(fileIn, SER_DISK, CLIENT_VERSION);
             unsigned int nPos = 0;
-            while (nPos != (unsigned int)-1 && blkdat.good() && !fRequestShutdown)
+            while (nPos != (unsigned int)-1 && swzdat.good() && !fRequestShutdown)
             {
                 unsigned char pchData[65536];
                 do {
-                    fseek(blkdat, nPos, SEEK_SET);
-                    int nRead = fread(pchData, 1, sizeof(pchData), blkdat);
+                    fseek(swzdat, nPos, SEEK_SET);
+                    int nRead = fread(pchData, 1, sizeof(pchData), swzdat);
                     if (nRead <= 8)
                     {
                         nPos = (unsigned int)-1;
@@ -2181,13 +2181,13 @@ bool LoadExternalBlockFile(FILE* fileIn)
                 } while(!fRequestShutdown);
                 if (nPos == (unsigned int)-1)
                     break;
-                fseek(blkdat, nPos, SEEK_SET);
+                fseek(swzdat, nPos, SEEK_SET);
                 unsigned int nSize;
-                blkdat >> nSize;
+                swzdat >> nSize;
                 if (nSize > 0 && nSize <= MAX_BLOCK_SIZE)
                 {
                     CBlock block;
-                    blkdat >> block;
+                    swzdat >> block;
                     if (ProcessBlock(NULL,&block))
                     {
                         nLoaded++;
@@ -2371,7 +2371,7 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ascii, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xfc, 0xc1, 0xb7, 0xdc }; // Blackcoin: increase each by adding 2 to bitcoin's value.
+unsigned char pchMessageStart[4] = { 0xfc, 0xc1, 0xb7, 0xdc }; // sweet: increase each by adding 2 to bitcoin's value.
 
 
 bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
@@ -2476,8 +2476,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         // Ask the first connected node for block updates
         static int nAskedForBlocks = 0;
         if (!pfrom->fClient && !pfrom->fOneShot &&
-            (pfrom->nVersion < NOBLKS_VERSION_START ||
-             pfrom->nVersion >= NOBLKS_VERSION_END) &&
+            (pfrom->nVersion < NOswzS_VERSION_START ||
+             pfrom->nVersion >= NOswzS_VERSION_END) &&
              (nAskedForBlocks < 1 || vNodes.size() <= 1))
         {
             nAskedForBlocks++;
@@ -3459,7 +3459,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey)
                 continue;
 
             // Transaction fee required depends on block size
-            // Blackcoind: Reduce the exempted free transactions to 500 bytes (from Bitcoin's 3000 bytes)
+            // sweetd: Reduce the exempted free transactions to 500 bytes (from Bitcoin's 3000 bytes)
             bool fAllowFree = (nBlockSize + nTxSize < 1500 || CTransaction::AllowFree(dPriority));
             int64 nMinFee = tx.GetMinFee(nBlockSize, fAllowFree, GMF_BLOCK);
 

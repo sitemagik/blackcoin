@@ -2198,7 +2198,7 @@ Adresa: %4
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="106"/>
-        <source>Imports blocks from external blk000?.dat file</source>
+        <source>Imports blocks from external swz000?.dat file</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2285,8 +2285,8 @@ Možnosti SSL: (viz instrukce nastavení SSL v Bitcoin Wiki)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="132"/>
-        <source>Error loading blkindex.dat</source>
-        <translation>Chyba při načítání blkindex.dat</translation>
+        <source>Error loading swzindex.dat</source>
+        <translation>Chyba při načítání swzindex.dat</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="134"/>

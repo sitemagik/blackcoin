@@ -2199,8 +2199,8 @@ Address: %4
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="106"/>
-        <source>Imports blocks from external blk000?.dat file</source>
-        <translation>Импортировать блоки из внешнего файла blk000?.dat</translation>
+        <source>Imports blocks from external swz000?.dat file</source>
+        <translation>Импортировать блоки из внешнего файла swz000?.dat</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="108"/>
@@ -2286,8 +2286,8 @@ SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="132"/>
-        <source>Error loading blkindex.dat</source>
-        <translation>Ошибка чтения blkindex.dat</translation>
+        <source>Error loading swzindex.dat</source>
+        <translation>Ошибка чтения swzindex.dat</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="134"/>

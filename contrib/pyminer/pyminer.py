@@ -96,7 +96,7 @@ class Miner:
 		static_data = bufreverse(static_data)
 
 		# the first 76b of 80b do not change
-		blk_hdr = static_data[:76]
+		swz_hdr = static_data[:76]
 
 		# decode 256-bit target value
 		targetbin = targetstr.decode('hex')
@@ -106,7 +106,7 @@ class Miner:
 
 		# pre-hash first 76b of block header
 		static_hash = hashlib.sha256()
-		static_hash.update(blk_hdr)
+		static_hash.update(swz_hdr)
 
 		for nonce in xrange(self.max_nonce):
 

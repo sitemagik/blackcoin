@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2012 Litecoin Developers
-// Copyright (c) 2013 Blackcoin Developers
+// Copyright (c) 2013 sweet Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -174,7 +174,7 @@ CDB::CDB(const char *pszFile, const char* pszMode) :
 
 static bool IsChainFile(std::string strFile)
 {
-    if (strFile == "blkindex.dat")
+    if (strFile == "swzindex.dat")
         return true;
 
     return false;

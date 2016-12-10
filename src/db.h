@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2012 Litecoin Developers
-// Copyright (c) 2013 Blackcoin Developers
+// Copyright (c) 2013 sweet Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_DB_H
@@ -295,11 +295,11 @@ public:
 
 
 
-/** Access to the transaction database (blkindex.dat) */
+/** Access to the transaction database (swzindex.dat) */
 class CTxDB : public CDB
 {
 public:
-    CTxDB(const char* pszMode="r+") : CDB("blkindex.dat", pszMode) { }
+    CTxDB(const char* pszMode="r+") : CDB("swzindex.dat", pszMode) { }
 private:
     CTxDB(const CTxDB&);
     void operator=(const CTxDB&);
