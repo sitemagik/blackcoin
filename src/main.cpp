@@ -1999,7 +1999,7 @@ bool LoadBlockIndex(bool fAllowNew)
         //   vMerkleTree: 97ddfbbae6
 
         // Genesis block
-        const char* pszTimestamp = "NY Times 05/Dec/2016 Donald Trump, Is a fucking moron";
+        const char* pszTimestamp = "2 birds full of poo";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2025,7 +2025,7 @@ bool LoadBlockIndex(bool fAllowNew)
         printf("%s\n", block.GetHash().ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("57b6863ccb2df7e7d58e4e06bbdbb6ec3abbda0b5b76c3f15464428fee4ffff0"));
+        assert(block.hashMerkleRoot == uint256("6bb02ffa95c89709133ba6a00c10467a1ef4f51867d34b888398382d6269fae3"));
 
         // If genesis block hash does not match, then generate new genesis hash.
         if (false && block.GetHash() != hashGenesisBlock)
