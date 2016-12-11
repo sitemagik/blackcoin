@@ -30,7 +30,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("oxo");
+uint256 hashGenesisBlock("371d845655c9279a5e3c4a2dd43fbe02ffc8bb34c8bde65a33d818209c72022b");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // sweet: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1972,7 +1972,7 @@ bool LoadBlockIndex(bool fAllowNew)
         pchMessageStart[1] = 0xc5;
         pchMessageStart[2] = 0xbc;
         pchMessageStart[3] = 0xdf;
-        hashGenesisBlock = uint256("oxo");
+        hashGenesisBlock = uint256("371d845655c9279a5e3c4a2dd43fbe02ffc8bb34c8bde65a33d818209c72022b");
     }
 
     //
@@ -2005,7 +2005,7 @@ bool LoadBlockIndex(bool fAllowNew)
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 50 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04678afdb0fe5548271967f1a67130") << OP_CHECKSIG;
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
@@ -2029,7 +2029,7 @@ bool LoadBlockIndex(bool fAllowNew)
         assert(block.hashMerkleRoot == uint256("6bb02ffa95c89709133ba6a00c10467a1ef4f51867d34b888398382d6269fae3"));
 
         // If genesis block hash does not match, then generate new genesis hash.
-        if (true && block.GetHash() != hashGenesisBlock)
+        if (false && block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
